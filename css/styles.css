@@ -1,0 +1,55 @@
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    /*overflow: hidden;*/
+    background-color: #111;
+    /* Fixe la position de la nav bar en haut meme en scroll*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+}
+
+
+.navigation h1 {
+    color: white;
+    font-family: 'Red Hat Display', sans-serif;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
+}
+
+body {
+    background-color: #333;
+
+}
+
+#myGroupList p {
+    color: white;
+    font-family: 'Red Hat Display', sans-serif;
+    margin-left: 2em;
+}
+#myGroupList h1 {
+    color: white;
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+#myGroupList {
+    background-color: rgb(117, 108, 108);
+}
+
+#myDynamicList p {
+    color: white;
+    font-family: 'Red Hat Display', sans-serif;
+    margin-left: 2em;
+}
+#myDynamicList h1 {
+    color: white;
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+#myDynamicList {
+    background-color: rgb(117, 108, 108);
+}
