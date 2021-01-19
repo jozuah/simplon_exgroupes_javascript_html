@@ -44,31 +44,22 @@ document.querySelector("#add").addEventListener("click", function() {
     myPList.innerText = listNomsDynamiques
     myDynamicList.appendChild(myPList) 
     
-    /*A tester demain, creer une liste depuis le local storage
-    localStorage.setItem("listnom", JSON.stringify(listNomsDynamiques));
-    console.log(localStorage.setItem)
-    storedNames = JSON.parse(localStorage.getItem("listnom"));
-    console.log(storedNames)*/
-
+    /*Sauvegarde de ma liste dynamique dans le localstorage*/
     localStorage.localList = [...listNomsDynamiques]
-    //myPListStore.innerText = localStorage.localList
-    //myDynamicList.appendChild(myPListStore)  
 })
 
 document.querySelector("#reloadList").addEventListener("click", function(){
-    /*
+
+    /* Je récupère ce qu'il y a dans mon localStorage (type undefined)
+    et je le convertit en type string */
+    var my_string_local_list = localStorage.localList.toString()
+    /* Je convertit cette string avec des virgules en liste */
+    var storedNames = my_string_local_list.split(",")
+    console.log("Liste des noms dans le localStorage", storedNames)
     myPListStore.innerText = storedNames
     myDynamicList.appendChild(myPListStore) 
-    console.log(localStorage.setItem)
-    listNomsDynamiques = storedNames*/
-
-    myPListStore.innerText = localStorage.localList
-    myDynamicList.appendChild(myPListStore) 
-    console.log(localStorage.localList)
-    listNomsDynamiques = localStorage.localList
+    listNomsDynamiques = storedNames
 })
-
-
 
 
 /* Onclick sur Creer groupe, j'affiche dans ma console les groupes que je créé a partir d'une liste définie */
@@ -81,7 +72,8 @@ function groupeFactory(){
     //var myStudents = [...myStudentsStatique];
     //console.log(myStudentsStatique)
     var myStudents = [...listNomsDynamiques];
-    console.log(myStudents)
+    console.log("logmystudent + mystudentsgroup",myStudents,myStudents_groupe)
+    console.log("mygrouplist",myGroupList.innerHTML)
     maxStudentsPerGroup = document.querySelector("#maxNB").value;
 
 
@@ -102,15 +94,14 @@ function groupeFactory(){
         count_group = count_group + 1
         myP.innerText += "\n" + count_group + ":"  + myStudents_groupe + "\n"
         myGroupList.appendChild(myP)
-        console.log(myStudents_groupe)
+        console.log("groupe:",myStudents_groupe)
         // Je vide ma variable de stockage de groupe
         myStudents_groupe.length = 0;
     }
     count_group = count_group + 1
     myP.innerText += "\n" + count_group + ":" + myStudents
-    console.log(myStudents)
+    console.log("groupe:",myStudents)
     myStudents.length = 0
-    console.log(myStudents)
 }
 
 document.querySelector("#removeGroupe").addEventListener("click", function(){
@@ -118,10 +109,11 @@ document.querySelector("#removeGroupe").addEventListener("click", function(){
         /*Tout effacer*/
         myGroupList.removeChild(myH1)
         myGroupList.removeChild(myP)
-        /*
+        /* On vide ce qu'il y a dans le P en lui mettant une string vide */
+        myP.innerHTML=""
+        /* Petit cours sur comment enlever un affichage
         let element = document.querySelector("...")
         let parent = document.querySelector("...")
         parent.removeChild(element)
         */
-
 })
